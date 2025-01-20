@@ -1,12 +1,15 @@
 import express from 'express';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
+
+dotenv.config();
 const app = express();
 const port = 3000;
 
 // Initialize Google Generative AI
-const genAI = new GoogleGenerativeAI("AIzaSyAkolq55CBSU_pvcia0AFd_uvBCRBKyw8Y");
+const genAI = new GoogleGenerativeAI(process.env.OPENAI_API_KEY);
 
 // Middleware to parse JSON bodies
 app.use(express.json());
